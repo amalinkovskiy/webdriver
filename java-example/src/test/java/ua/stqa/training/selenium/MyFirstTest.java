@@ -29,6 +29,15 @@ public void start(){
     driver.get("http://www.habrahabr.ru");
 }
 
+@Test
+public void loginToLiteCartAdmin(){
+        driver.get("http://localhost/litecart/admin/");
+        driver.findElement(By.name("username")).sendKeys("admin");
+        driver.findElement(By.name("password")).sendKeys("admin");
+        driver.findElement(By.name("login")).click();
+
+}
+
 @After
 public void stop(){
         driver.quit();
