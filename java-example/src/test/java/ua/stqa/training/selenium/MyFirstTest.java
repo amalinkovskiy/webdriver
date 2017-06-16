@@ -10,6 +10,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 
 /**
  * Created by amalinkovskiy on 6/7/2017.
@@ -26,6 +28,15 @@ public class MyFirstTest {
         wait = new WebDriverWait(driver, 30);
 
 
+    }
+
+    @Test
+    public void findAllItemsWithSticker(){
+        driver.get("http://localhost/litecart/en/");
+        List<WebElement> products = driver.findElements(By.cssSelector("ul.products li.product"));
+        for (WebElement item: products) {
+            Assert.assertTrue(item.findElements(By.cssSelector("div[class^=sticker]")).size() == 1);
+        }
     }
 
 @Test
@@ -143,6 +154,8 @@ public void myFirstTest(){
 
 
     }
+
+
 
     @After
     public void stop() {
