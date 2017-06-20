@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -13,6 +14,20 @@ import java.util.List;
  */
 public class MyFirstTest extends TestBase {
 
+
+    @Test
+    public void alphabeticalOrder(){
+        loginAdmin();
+        List<Country> countries = getCountriesList();
+        List<Country> sortedCountries = countries.stream()
+                .sorted((c1, c2) -> c1.getName().compareTo(c2.getName())).collect(Collectors.toList());
+        Assert.assertEquals(countries, sortedCountries);
+
+        Assert.assertTrue(alphabetZonesSorted(countries));
+        goToGeoZones();
+        List<Country> countriesInGeo = getCountriesInGeo();
+        Assert.assertTrue(checkZonesSortedForCountriesInGeo(countriesInGeo));
+    }
 
     @Test
     public void myFirstTest() {
