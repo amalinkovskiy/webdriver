@@ -1,4 +1,4 @@
-package ua.stqa.training.selenium;
+package ua.stqa.training.selenium.model;
 
 /**
  * Created by amalinkovskiy on 6/19/2017.

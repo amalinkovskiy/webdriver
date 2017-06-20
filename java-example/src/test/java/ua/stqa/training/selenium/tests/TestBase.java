@@ -1,4 +1,4 @@
-package ua.stqa.training.selenium;
+package ua.stqa.training.selenium.tests;
 
 import org.junit.After;
 import org.junit.Before;
@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ua.stqa.training.selenium.model.Country;
+import ua.stqa.training.selenium.model.Zone;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,10 +20,10 @@ import java.util.stream.Collectors;
  */
 public class TestBase {
     protected WebDriver driver;
-    List<WebElement> submenuItems;
-    WebElement element;
-    WebElement subElement;
-    List<WebElement> menuItems;
+    public List<WebElement> submenuItems;
+    public WebElement element;
+    public WebElement subElement;
+    public List<WebElement> menuItems;
     private WebDriverWait wait;
 
     @Before

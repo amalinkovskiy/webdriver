@@ -1,9 +1,10 @@
-package ua.stqa.training.selenium;
+package ua.stqa.training.selenium.tests;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import ua.stqa.training.selenium.model.Country;
 
 import java.util.List;
 import java.util.stream.Collectors;
