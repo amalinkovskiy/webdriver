@@ -7,9 +7,13 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ua.stqa.training.selenium.model.Country;
 import ua.stqa.training.selenium.model.Zone;
+import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +33,10 @@ public class TestBase {
     @Before
     public void start() {
 
-        driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, 30);
+//        driver = new FirefoxDriver();
+//        driver = new ChromeDriver();
+        driver = new InternetExplorerDriver();
+        WebDriverWait wait = new WebDriverWait(driver, 30);
 
 
     }
@@ -156,5 +162,41 @@ public class TestBase {
             }
         }
         return sorted;
+    }
+
+    protected boolean verifyColor(String locator, String targetColor, List<WebElement> products) {
+
+        String color = products.get(0).findElement(By.cssSelector(locator))
+                .getCssValue("color");
+        int r = Color.fromString(color).getColor().getRed();
+        int g = Color.fromString(color).getColor().getBlue();
+        int b = Color.fromString(color).getColor().getGreen();
+
+        if (targetColor.equals("grey")){
+            return r==g && r==b;
+        }
+
+        if (targetColor.equals("red")){
+            return r>0 && g==0 && b==0;
+        }
+        return false;
+    }
+
+    protected boolean verifyColor(String locator, String targetColor) {
+
+        String color = driver.findElement(By.cssSelector(locator))
+                .getCssValue("color");
+        int r = Color.fromString(color).getColor().getRed();
+        int g = Color.fromString(color).getColor().getBlue();
+        int b = Color.fromString(color).getColor().getGreen();
+
+        if (targetColor.equals("grey")){
+            return r==g && r==b;
+        }
+
+        if (targetColor.equals("red")){
+            return r>0 && g==0 && b==0;
+        }
+        return false;
     }
 }
