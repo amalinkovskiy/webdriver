@@ -46,6 +46,10 @@ public class TestRegisterCustomer extends TestBase{
         driver.findElement(By.cssSelector("input[name='confirmed_password']")).sendKeys(customer.getPassword());
 
         driver.findElement(By.cssSelector("button[name='create_account']")).click();
+        driver.findElement(By.cssSelector("a[href='http://localhost/litecart/en/logout']")).click();
+        driver.findElement(By.cssSelector("form[name='login_form'] input[name='email']")).sendKeys(customer.getEmail());
+        driver.findElement(By.cssSelector("form[name='login_form'] input[name='password']")).sendKeys(customer.getPassword());
+        driver.findElement(By.cssSelector("form[name='login_form'] button[name='login']")).click();
 
 
     }
