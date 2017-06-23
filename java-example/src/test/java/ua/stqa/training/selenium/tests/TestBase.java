@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -34,8 +35,8 @@ public class TestBase {
     public void start() {
 
 //        driver = new FirefoxDriver();
-//        driver = new ChromeDriver();
-        driver = new InternetExplorerDriver();
+        driver = new ChromeDriver();
+//        driver = new InternetExplorerDriver();
         WebDriverWait wait = new WebDriverWait(driver, 30);
 
 
